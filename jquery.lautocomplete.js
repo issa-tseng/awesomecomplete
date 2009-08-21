@@ -231,7 +231,7 @@
                 });
         }
 
-        results.sort(function(a, b) { b.matchCount - a.matchCount })
+        results.sort(function(a, b) { return b.matchCount - a.matchCount });
         results = results.slice(0, config.resultLimit);
 
         for (var i in results)

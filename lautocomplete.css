@@ -1,0 +1,68 @@
+/**
+ * Sample stylesheet for L'Autocomplete
+ *  Clint Tseng — 2009-08-20
+ */
+
+ul.autocomplete
+{
+    background-color: #fff;
+    border: 1px solid #777;
+    list-style-type: none;
+    min-height: 100px;
+    padding: 2px;
+    position: absolute;
+}
+
+ul.autocomplete li
+{
+    border-top: 1px solid #aaa;
+    cursor: pointer;
+    padding: 4px;
+}
+
+ul.autocomplete li:first-child
+{
+    border-top: none;
+}
+
+ul.autocomplete li.active
+{
+    background-color: #eef;
+}
+
+ul.autocomplete:hover li.active
+{
+    background-color: auto;
+}
+
+ul.autocomplete li:hover
+{
+    background-color: #eef;
+}
+
+ul.autocomplete li p
+{
+    margin: 1px 4px;
+}
+
+ul.autocomplete li p.title
+{
+    font-weight: bold;
+}
+
+ul.autocomplete li p.matchRow
+{
+    color: #666;
+}
+
+ul.autocomplete li span.matchedField
+{
+    color: #999;
+    font-style: italic;
+}
+
+ul.autocomplete span.match
+{
+    font-weight: bold;
+    text-decoration: underline;
+}

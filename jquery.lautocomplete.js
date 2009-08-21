@@ -60,7 +60,7 @@
                 switch (event.which)
                 {
                     case 13:
-                        if ($active.length !== 0)
+                        if (($active.length !== 0) && ($list.is(':visible')))
                         {
                             event.preventDefault();
                             $this.val($active.data('lautocomplete-value'));

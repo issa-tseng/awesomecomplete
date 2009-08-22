@@ -3,6 +3,8 @@
  *  Clint Tseng — 2009-08-20
  */
 
+/* Core styles */
+
 ul.autocomplete
 {
     background-color: #fff;
@@ -32,15 +34,7 @@ ul.autocomplete li.active
     background-color: #eef;
 }
 
-ul.autocomplete:hover li.active
-{
-    background-color: auto;
-}
-
-ul.autocomplete li:hover
-{
-    background-color: #eef;
-}
+/* Default render function styles */
 
 ul.autocomplete li p
 {

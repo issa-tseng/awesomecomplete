@@ -253,6 +253,11 @@
                 .click(function()
                 {
                     $this.val($(this).data('awesomecomplete-value'));
+                })
+                .mouseover(function()
+                {
+                    $(this).addClass(config.activeItemClass)
+                           .siblings().removeClass(config.activeItemClass);
                 });
         }
 

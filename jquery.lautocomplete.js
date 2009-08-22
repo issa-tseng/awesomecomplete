@@ -21,10 +21,9 @@
             $this.data('lautocomplete-config', config);
 
             var $list = $('<ul/>').addClass(config.suggestionListClass)
-                                  .insertBefore($this)
+                                  .insertAfter($this)
                                   .hide()
-                                  .css('width', $this.innerWidth())
-                                  .css('margin-top', $this.outerHeight(false));
+                                  .css('width', $this.innerWidth());
             $this.data('lautocomplete-list', $list);
 
             var typingDelayPointer;
@@ -181,6 +180,7 @@
 
             var maxFieldMatches = 0;
             var topMatch = null;
+            var matchedTerms = [];
 
             for (var field in dataItem)
             {
@@ -210,6 +210,7 @@
                         {
                             maxFieldMatches = matches.length;
                             topMatch = field;
+                            matchedTerms[j] = true;
                         }
                     }
                 }
@@ -222,16 +223,27 @@
                 }
             }
 
+            var matchedTermCount = 0;
+            for (var j = 0; j < matchedTerms.length; j++)
+                if (matchedTerms[j] === true)
+                    matchedTermCount++;
+
             if (matchCount > 0)
                 results.push({
                     dataItem: dataItem,
                     originalDataItem: data[item],
                     matchCount: matchCount,
-                    topMatch: topMatch
+                    topMatch: topMatch,
+                    matchedTermCount: matchedTermCount
                 });
         }
 
-        results.sort(function(a, b) { return b.matchCount - a.matchCount });
+        results.sort(function(a, b)
+        {
+            return (a.matchedTermCount == b.matchedTermCount) ?
+                   (b.matchCount - a.matchCount) :
+                   (b.matchedTermCount - a.matchedTermCount);
+        });
         results = results.slice(0, config.resultLimit);
 
         for (var i in results)

@@ -218,8 +218,7 @@
                 if (config.highlightMatches)
                 {
                     var regex = new RegExp('(' + terms.join('|') + ')', (config.ignoreCase ? 'ig' : 'g'));
-
-                    dataItem[field] = dataString.replace(regex, '<span class="match">$1</span>');
+                    dataItem[field] = dataString.replace(regex, '<span class="' + config.highlightClass + '">$1</span>');
                 }
             }
 
@@ -248,7 +247,7 @@
 
         for (var i in results)
         {
-            $('<li>' + config.renderFunction(results[i].dataItem, results[i].topMatch) + '</li>')
+            $('<li>' + config.renderFunction(results[i].dataItem, results[i].topMatch, results[i].originalDataItem) + '</li>')
                 .data('awesomecomplete-value', config.valueFunction(results[i].originalDataItem))
                 .appendTo($list)
                 .click(function()
@@ -277,7 +276,7 @@
     
     var defaultValueFunction = function(dataItem)
     {
-        return dataItem['name'];
+        return dataItem[config.nameField];
     };
 
     $.fn.awesomecomplete.defaults = {
@@ -285,6 +284,7 @@
         dataMethod: undefined,
         dontMatch: [],
         highlightMatches: true,
+        highlightClass: 'match',
         ignoreCase: true,
         nameField: 'name',
         noResultsClass: 'noResults',

@@ -1,4 +1,4 @@
-h1. Awesomecomplete — Autocomplete that doesn't suck. I think.
+h1. Awesomecomplete — autocomplete that doesn't suck. I think.
 
 h2. Why bother?
 

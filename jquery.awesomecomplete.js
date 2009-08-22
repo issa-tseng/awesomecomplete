@@ -20,10 +20,11 @@
             var config = $.meta ? $.extend({}, options, $this.data()) : options;
             $this.data('awesomecomplete-config', config);
 
+            var $attachTo = $(config.attachTo || $this);
             var $list = $('<ul/>').addClass(config.suggestionListClass)
-                                  .insertAfter($this)
+                                  .insertAfter($attachTo)
                                   .hide()
-                                  .css('width', $this.innerWidth());
+                                  .css('width', $attachTo.innerWidth());
             $this.data('awesomecomplete-list', $list);
 
             var typingDelayPointer;
@@ -286,6 +287,7 @@
 
     $.fn.awesomecomplete.defaults = {
         activeItemClass: 'active',
+        attachTo: undefined,
         dataMethod: undefined,
         dontMatch: [],
         highlightMatches: true,

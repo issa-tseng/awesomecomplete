@@ -1,0 +1,34 @@
+h1. Awesomecomplete — Autocomplete that doesn't suck. I think.
+
+h2. Why bother?
+
+The problem with most jQuery autocomplete plugins is pretty simple: they suck.  My hope is that mine does not, but only time (and all of you!) will tell.  While writing my plugin, though, I came to understand why this was the case: it's rather difficult to write a flexible, customizable autocomplete plugin without ending up with somewhat of a shell of a plugin.  After all, let us consider the critical components of implementing autocomplete:
+
+* *Data retrieval*.  Where does my data come from?  How do I format my request to the server and interpret what comes back?
+* *Data format*.  What field am I searching against?
+* *Data render*.  How do I display my list of options?  What if I want to render a picture in the list?  When the user selects a value, what data should I end up with?
+* *Keyboard/mouse navigation*.  Wiring things up.
+
+Apart from the last item — which, trust me, is the easiest part of the whole thing thanks to the magic of jQuery — everything else on that list is extremely contextual to the development environment.  So how do you write a plugin where 80% of the potential code is hardly reusable?  Some plugins take the end-all, be-all approach to this problem — account for all scenarios.  I take the opposite.
+
+As far as data retrieval is concerned, for instance, I leave that as an exercise to the developer.  You give me a function to call when I need data from you, since you know how to get it.  If your application has been written solidly, it'll probably be a one-liner.  I'll give you a function to call back to when you get that data, and then we can continue on our merry.  Of course, Awesomecomplete also supports loading in a prefetched cache of data — it's actually the most useful in that case where it can see all available data at once, as you'll see.
+
+h2. So what makes this particular plugin cool?
+
+We've dealt with the data retrieval problem listed above in what I think is a lightweight and elegant fashion.  You do it.  The data rendering problem is really rather simple — I tell you all the relevant information about what you need to render, and you can give me a function that will do it.  There are defaults that should actually work for 90% of you, though.
+
+What makes the plugin cool, I think, is the solution to the data format problem.  The obvious solution, since I'm making you do all this work of getting the data anyway, is to expect it in some kind of format — a list of strings, a list of key-value pairs, etc.  I think this is a bad solution.
+
+JavaScript is a dynamically typed language that's trivially easy to reflect against.  Why should I care what you give me?  Just give me a list of whatever JavaScript model objects you use.  You can specify the name of the "primary field" that will always be displayed (eg the name of a person), but the plugin will automatically parse every field in the object (you can of course tell it to skip fields you want left alone) for the search phrase, highlighting them if desired and telling you what field the best match was.
+
+So, it's an autocomplete plugin that works against multiple fields, with a pretty powerful and flexible search algorithm.  There's not much more to say about the design philosophy behind it, so onward!
+
+h2. Demo
+
+"Go here":http://dev.dontexplain.com/awesomecomplete/example/example.html for a demo running with some statically preloaded data.  As a bonus to Safari and Firefox users, there are CSS3 rounded corners and drop shadows just for kicks.  The data has names, emails, and phone numbers in it, so feel free to search on any of those.  I should probably have included a mixed number-string field so that you can see that it'll match any field on any item independently, but you'll just have to take my word for it for now.
+
+h2. Quick Start
+
+The provided awesomecomplete.css file is a sample stylesheet for the dropdown list.  It's pretty spartan, so it should be easy to figure out how to get what you want out of it, but you're going to want pretty much all of the classes in there, in more or less that order.  Other than that, take a quick look at the example page and dig right in!
+
+The wiki should have a pretty complete documentation of the configuration options soon enough.

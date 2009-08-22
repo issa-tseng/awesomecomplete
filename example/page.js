@@ -44,7 +44,7 @@ $(function()
         { name: 'Pam Martin', email: 'pam.martin@buffalo.dundermifflin.com', phone: '(204) 189-7995' }
     ];
 
-    $('#friend_id').lautocomplete({
+    $('#friend_id').awesomecomplete({
         noResultsMessage: '<p>no results found!</p>',
         staticData: mockData,
         valueFunction: function(dataItem) {

@@ -1,6 +1,6 @@
 /**
- * L'Autocomplete — A lightweight, simple autocomplete plugin
- *  Clint Tseng — 2009-08-20
+ * Awesomecomplete — A lightweight, simple autocomplete plugin
+ *  Clint Tseng (clint@dontexplain.com) — 2009-08-20
  *    I think licenses are dumb and superfluous. I'm releasing this into the
  *    wild under public domain, but please do let me know what you think!
  */
@@ -10,21 +10,21 @@
     var ident = 0;
 
     // Initializer. Call on a text field to make things go.
-    $.fn.lautocomplete = function(options)
+    $.fn.awesomecomplete = function(options)
     {
-        var options = $.extend({}, $.fn.lautocomplete.defaults, options);
+        var options = $.extend({}, $.fn.awesomecomplete.defaults, options);
 
         return this.each(function()
         {
             var $this = $(this);
             var config = $.meta ? $.extend({}, options, $this.data()) : options;
-            $this.data('lautocomplete-config', config);
+            $this.data('awesomecomplete-config', config);
 
             var $list = $('<ul/>').addClass(config.suggestionListClass)
                                   .insertAfter($this)
                                   .hide()
                                   .css('width', $this.innerWidth());
-            $this.data('lautocomplete-list', $list);
+            $this.data('awesomecomplete-list', $list);
 
             var typingDelayPointer;
             var suppressKey = false;
@@ -62,7 +62,7 @@
                         if (($active.length !== 0) && ($list.is(':visible')))
                         {
                             event.preventDefault();
-                            $this.val($active.data('lautocomplete-value'));
+                            $this.val($active.data('awesomecomplete-value'));
                             $list.hide();
                         }
                         $list.hide();
@@ -102,11 +102,11 @@
             // stupid hack to get around loss of focus on mousedown
             var mouseDown = false;
             var blurWait = false;
-            $(document).bind('mousedown.lautocomplete' + ++ident, function()
+            $(document).bind('mousedown.awesomecomplete' + ++ident, function()
             {
                 mouseDown = true;
             });
-            $(document).bind('mouseup.lautocomplete' + ident, function()
+            $(document).bind('mouseup.awesomecomplete' + ident, function()
             {
                 mouseDown = false;
                 if (blurWait)
@@ -125,7 +125,7 @@
                 {
                     var $active = $list.children('li.' + config.activeItemClass);
                     if ($list.is(':visible') && ($active.length !== 0))
-                        $this.val($active.data('lautocomplete-value'));
+                        $this.val($active.data('awesomecomplete-value'));
                     $list.hide();
                 }
             });
@@ -140,7 +140,7 @@
     // Data callback.  If you're using callbacks to a server,
     // call this on the autocompleted text field to complete the
     // callback process after you have your matching items.
-    $.fn.lautocomplete.onData = function(data, term)
+    $.fn.awesomecomplete.onData = function(data, term)
     {
         return this.each(function()
         {
@@ -159,18 +159,18 @@
         }
         else
         {
-            processData($this, $this.data('lautocomplete-config').staticData, $this.val());
+            processData($this, $this.data('awesomecomplete-config').staticData, $this.val());
         }
     };
     
     var processData = function($this, data, term)
     {
-        var $list = $this.data('lautocomplete-list');
+        var $list = $this.data('awesomecomplete-list');
         $list.empty().hide();
         if (term === '')
             return;
 
-        var config = $this.data('lautocomplete-config');
+        var config = $this.data('awesomecomplete-config');
 
         var results = [];
         for (var item = 0; item < data.length; item++)
@@ -249,11 +249,11 @@
         for (var i in results)
         {
             $('<li>' + config.renderFunction(results[i].dataItem, results[i].topMatch) + '</li>')
-                .data('lautocomplete-value', config.valueFunction(results[i].originalDataItem))
+                .data('awesomecomplete-value', config.valueFunction(results[i].originalDataItem))
                 .appendTo($list)
                 .click(function()
                 {
-                    $this.val($(this).data('lautocomplete-value'));
+                    $this.val($(this).data('awesomecomplete-value'));
                 });
         }
 
@@ -280,7 +280,7 @@
         return dataItem['name'];
     };
 
-    $.fn.lautocomplete.defaults = {
+    $.fn.awesomecomplete.defaults = {
         activeItemClass: 'active',
         dataMethod: undefined,
         dontMatch: [],

@@ -64,6 +64,7 @@
                         {
                             event.preventDefault();
                             $this.val($active.data('awesomecomplete-value'));
+							config.onComplete($active.data('awesomecomplete-dataItem'));
                             $list.hide();
                         }
                         $list.hide();
@@ -155,13 +156,9 @@
     var processInput = function($this)
     {
         if (typeof dataMethod === 'function')
-        {
             dataMethod($this.val(), $this);
-        }
         else
-        {
             processData($this, $this.data('awesomecomplete-config').staticData, $this.val());
-        }
     };
     
     var processData = function($this, data, term)
@@ -252,6 +249,7 @@
         for (var i in results)
         {
             $('<li>' + config.renderFunction(results[i].dataItem, results[i].topMatch, results[i].originalDataItem) + '</li>')
+				.data('awesomecomplete-dataItem', results[i].originalDataItem)
                 .data('awesomecomplete-value', config.valueFunction(results[i].originalDataItem))
                 .appendTo($list)
                 .click(function()
@@ -299,6 +297,7 @@
         nameField: 'name',
         noResultsClass: 'noResults',
         noResultsMessage: undefined,
+		onComplete: function(dataItem) {},
         splitTerm: true,
         staticData: [],
         suggestionListClass: "autocomplete",

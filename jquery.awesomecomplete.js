@@ -185,9 +185,12 @@
                 if ((typeof dataItem[field] === 'function') || (typeof dataItem[field] === 'object'))
                     continue;
 
+                var skippedField = false;
                 for (var j = 0; j < config.dontMatch.length; j++)
                     if (field == config.dontMatch[j])
-                        continue;
+                        skippedField = true;
+                if (skippedField)
+                    continue;
 
                 var dataString = dataItem[field].toString();
                 var terms = [ term ];

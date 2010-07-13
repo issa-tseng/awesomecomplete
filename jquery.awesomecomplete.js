@@ -64,7 +64,7 @@
                         {
                             event.preventDefault();
                             $this.val($active.data('awesomecomplete-value'));
-							config.onComplete($active.data('awesomecomplete-dataItem'));
+                            config.onComplete($active.data('awesomecomplete-dataItem'));
                             $list.hide();
                         }
                         $list.hide();
@@ -142,7 +142,7 @@
     // Data callback.  If you're using callbacks to a server,
     // call this on the autocompleted text field to complete the
     // callback process after you have your matching items.
-    $.fn.awesomecomplete.onData = function(data, term)
+    $.fn.awesomecomplete_onData = function(data, term)
     {
         return this.each(function()
         {
@@ -155,8 +155,8 @@
 // private helpers
     var processInput = function($this)
     {
-        if (typeof dataMethod === 'function')
-            dataMethod($this.val(), $this);
+        if (typeof $this.data('awesomecomplete-config').dataMethod === 'function')
+            $this.data('awesomecomplete-config').dataMethod($this.val(), $this);
         else
             processData($this, $this.data('awesomecomplete-config').staticData, $this.val());
     };
@@ -300,7 +300,7 @@
         nameField: 'name',
         noResultsClass: 'noResults',
         noResultsMessage: undefined,
-		onComplete: function(dataItem) {},
+        onComplete: function(dataItem) {},
         splitTerm: true,
         staticData: [],
         suggestionListClass: "autocomplete",

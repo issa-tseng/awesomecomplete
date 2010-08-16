@@ -275,7 +275,7 @@
 // default functions
     var defaultRenderFunction = function(dataItem, topMatch, config)
     {
-        if (topMatch === config.nameField)
+        if ((topMatch === config.nameField) || (topMatch === null))
             return '<p class="title">' + dataItem['name'] + '</p>';
         else
             return '<p class="title">' + dataItem['name'] + '</p>' +

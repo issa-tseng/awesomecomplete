@@ -142,25 +142,24 @@
     // Data callback.  If you're using callbacks to a server,
     // call this on the autocompleted text field to complete the
     // callback process after you have your matching items.
-    var onData = function(data, term)
+    var onDataProxy = function($this, term)
     {
-        return this.each(function()
+        return function(data)
         {
-            var $this = $(this);
-            processData($this, data, (term || $this.val()));
-        });
-    };
-
+            processData($this, data, term);
+        };
+    }
 
 // private helpers
     var processInput = function($this)
     {
+        var term = $this.val();
         if (typeof $this.data('awesomecomplete-config').dataMethod === 'function')
-            $this.data('awesomecomplete-config').dataMethod($this.val(), $this, onData);
+            $this.data('awesomecomplete-config').dataMethod(term, $this, onDataProxy($this, term));
         else
-            processData($this, $this.data('awesomecomplete-config').staticData, $this.val());
+            processData($this, $this.data('awesomecomplete-config').staticData, term);
     };
-    
+
     var processData = function($this, data, term)
     {
         var $list = $this.data('awesomecomplete-list');

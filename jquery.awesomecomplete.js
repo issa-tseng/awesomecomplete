@@ -142,7 +142,7 @@
     // Data callback.  If you're using callbacks to a server,
     // call this on the autocompleted text field to complete the
     // callback process after you have your matching items.
-    $.fn.awesomecomplete_onData = function(data, term)
+    var onData = function(data, term)
     {
         return this.each(function()
         {
@@ -156,7 +156,7 @@
     var processInput = function($this)
     {
         if (typeof $this.data('awesomecomplete-config').dataMethod === 'function')
-            $this.data('awesomecomplete-config').dataMethod($this.val(), $this);
+            $this.data('awesomecomplete-config').dataMethod($this.val(), $this, onData);
         else
             processData($this, $this.data('awesomecomplete-config').staticData, $this.val());
     };

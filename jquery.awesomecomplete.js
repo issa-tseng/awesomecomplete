@@ -251,9 +251,9 @@
 
         for (var i in results)
         {
-            $('<li>' + config.renderFunction(results[i].dataItem, results[i].topMatch, results[i].originalDataItem) + '</li>')
+            $('<li>' + config.renderFunction(results[i].dataItem, results[i].topMatch, results[i].originalDataItem) + '</li>', config)
 				.data('awesomecomplete-dataItem', results[i].originalDataItem)
-                .data('awesomecomplete-value', config.valueFunction(results[i].originalDataItem))
+                .data('awesomecomplete-value', config.valueFunction(results[i].originalDataItem), config)
                 .appendTo($list)
                 .click(function()
                 {
@@ -274,9 +274,9 @@
     };
 
 // default functions
-    var defaultRenderFunction = function(dataItem, topMatch)
+    var defaultRenderFunction = function(dataItem, topMatch, config)
     {
-        if (topMatch === 'name')
+        if (topMatch === config.nameField)
             return '<p class="title">' + dataItem['name'] + '</p>';
         else
             return '<p class="title">' + dataItem['name'] + '</p>' +
@@ -284,7 +284,7 @@
                         dataItem[topMatch] + '</p>';
     };
     
-    var defaultValueFunction = function(dataItem)
+    var defaultValueFunction = function(dataItem, config)
     {
         return dataItem[config.nameField];
     };

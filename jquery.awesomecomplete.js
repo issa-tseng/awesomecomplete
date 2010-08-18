@@ -250,9 +250,9 @@
 
         for (var i in results)
         {
-            $('<li>' + config.renderFunction(results[i].dataItem, results[i].topMatch, results[i].originalDataItem) + '</li>', config)
+            $('<li>' + config.renderFunction(results[i].dataItem, results[i].topMatch, results[i].originalDataItem, config) + '</li>')
 				.data('awesomecomplete-dataItem', results[i].originalDataItem)
-                .data('awesomecomplete-value', config.valueFunction(results[i].originalDataItem), config)
+                .data('awesomecomplete-value', config.valueFunction(results[i].originalDataItem, config))
                 .appendTo($list)
                 .click(function()
                 {

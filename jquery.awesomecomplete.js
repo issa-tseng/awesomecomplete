@@ -45,7 +45,7 @@
                 if (config.typingDelay > 0)
                 {
                     clearTimeout(typingDelayPointer);
-                    typingDelayPointer = setTimeout(function() { processInput($this); });
+                    typingDelayPointer = setTimeout(function() { processInput($this); }, config.typingDelay);
                 }
                 else
                 {

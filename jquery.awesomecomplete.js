@@ -242,10 +242,9 @@
 
         results.sort(function(a, b)
         {
-            return (a.matchedTermCount == b.matchedTermCount) ?
-                   (b.matchCount - a.matchCount) :
-                   (b.matchedTermCount - a.matchedTermCount);
+            return config.sortFunction(a, b, term);
         });
+
         results = results.slice(0, config.resultLimit);
 
         for (var i in results)
@@ -288,6 +287,13 @@
         return dataItem[config.nameField];
     };
 
+    var defaultSortFunction = function(a, b, term)
+    {
+        return (a.matchedTermCount == b.matchedTermCount) ?
+               (b.matchCount - a.matchCount) :
+               (b.matchedTermCount - a.matchedTermCount);
+    };
+
     $.fn.awesomecomplete.defaults = {
         activeItemClass: 'active',
         attachTo: undefined,
@@ -300,6 +306,7 @@
         noResultsClass: 'noResults',
         noResultsMessage: undefined,
         onComplete: function(dataItem) {},
+        sortFunction: defaultSortFunction,
         splitTerm: true,
         staticData: [],
         suggestionListClass: "autocomplete",

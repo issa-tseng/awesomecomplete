@@ -101,6 +101,17 @@
                 }
             });
 
+	    // opera wants keypress rather than keydown to prevent the form submit
+            $this.keypress(function(event)
+            {
+                var $active = $list.children('li.' + config.activeItemClass);
+
+		if ((event.which == 13) && ($list.children('li.' + config.activeItemClass).length > 0))
+		{
+		    event.preventDefault();
+		}
+	    });
+
             // stupid hack to get around loss of focus on mousedown
             var mouseDown = false;
             var blurWait = false;

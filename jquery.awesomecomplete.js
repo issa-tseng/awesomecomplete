@@ -266,7 +266,9 @@
                 .appendTo($list)
                 .click(function()
                 {
-                    $this.val($(this).data('awesomecomplete-value'));
+                    var $this = $(this);
+                    $this.val($this.data('awesomecomplete-value'));
+                    config.onComplete($this.data('awesomecomplete-dataItem'));
                 })
                 .mouseover(function()
                 {

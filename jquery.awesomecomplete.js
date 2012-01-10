@@ -285,12 +285,12 @@
     };
 
 // default functions
-    var defaultRenderFunction = function(dataItem, topMatch, config)
+    var defaultRenderFunction = function(dataItem, topMatch, originalDataItem, config)
     {
         if ((topMatch === config.nameField) || (topMatch === null))
-            return '<p class="title">' + dataItem['name'] + '</p>';
+            return '<p class="title">' + dataItem[config.nameField] + '</p>';
         else
-            return '<p class="title">' + dataItem['name'] + '</p>' +
+            return '<p class="title">' + dataItem[config.nameField] + '</p>' +
                    '<p class="matchRow"><span class="matchedField">' + topMatch + '</span>: ' +
                         dataItem[topMatch] + '</p>';
     };

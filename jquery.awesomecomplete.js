@@ -212,7 +212,7 @@
                     if (terms[j] === '')
                         continue;
 
-                    terms[j] = terms[j].replace(/[\\*+?|{}()^$.#]/g, '\\$1');
+                    terms[j] = terms[j].replace(/([\\*+?|{}()^$.#])/g, '\\$1');
                     var regex = new RegExp('(' + terms[j] + ')', (config.ignoreCase ? 'ig' : 'g'));
 
                     var matches = [];

@@ -7,7 +7,8 @@
 
 (function($)
 {
-    var ident = 0;
+    var ident = 0,
+        scrollIntoView = ('scrollIntoView' in document.createElement('li'));
 
     // Initializer. Call on a text field to make things go.
     $.fn.awesomecomplete = function(options)
@@ -98,6 +99,12 @@
                         $list.hide();
                         suppressKey = true;
                         break;
+                }
+                if (scrollIntoView && $list.is(':visible')) {
+                    var $active = $list.children('li.' + config.activeItemClass);
+                    if ($active.length > 0) {
+                        $active.get(0).scrollIntoView(false);
+                    }
                 }
             });
 

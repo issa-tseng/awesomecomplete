@@ -321,6 +321,7 @@
     $.fn.awesomecomplete.defaults = {
         activeItemClass: 'active',
         attachTo: undefined,
+        wrapSuggestions: false,
         dataMethod: undefined,
         dontMatch: [],
         highlightMatches: true,

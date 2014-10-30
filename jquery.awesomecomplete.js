@@ -22,14 +22,15 @@
             $this.data('awesomecomplete-config', config);
 
             var $attachTo = $(config.attachTo || $this);
-            var $list = $('<ul/>').addClass(config.suggestionListClass);
+            var $list = $('<ul/>');
             if (!config.wrapSuggestions) {
-              $list.insertAfter($attachTo);
+                $list.insertAfter($attachTo);
             } else {
-              $list.appendTo($attachTo);
+                $list.appendTo($attachTo);
             }
             $list.hide()
-              .css('width', $attachTo.innerWidth());
+                .addClass(config.suggestionListClass)
+                .css('width', $attachTo.innerWidth());
             $this.data('awesomecomplete-list', $list);
 
             var typingDelayPointer;

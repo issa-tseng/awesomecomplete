@@ -22,10 +22,15 @@
             $this.data('awesomecomplete-config', config);
 
             var $attachTo = $(config.attachTo || $this);
-            var $list = $('<ul/>').addClass(config.suggestionListClass)
-                                  .insertAfter($attachTo)
-                                  .hide()
-                                  .css('width', $attachTo.innerWidth());
+            var $list = $('<ul/>');
+            if (!config.wrapSuggestions) {
+                $list.insertAfter($attachTo);
+            } else {
+                $list.appendTo($attachTo);
+            }
+            $list.hide()
+                .addClass(config.suggestionListClass)
+                .css('width', $attachTo.innerWidth());
             $this.data('awesomecomplete-list', $list);
 
             var typingDelayPointer;
@@ -301,7 +306,7 @@
                    '<p class="matchRow"><span class="matchedField">' + topMatch + '</span>: ' +
                         dataItem[topMatch] + '</p>';
     };
-    
+
     var defaultValueFunction = function(dataItem, config)
     {
         return dataItem[config.nameField];
@@ -317,6 +322,7 @@
     $.fn.awesomecomplete.defaults = {
         activeItemClass: 'active',
         attachTo: undefined,
+        wrapSuggestions: false,
         dataMethod: undefined,
         dontMatch: [],
         highlightMatches: true,

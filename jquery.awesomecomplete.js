@@ -23,7 +23,7 @@
 
             var $attachTo = $(config.attachTo || $this);
             var $list = $('<ul/>').addClass(config.suggestionListClass)
-                                  .insertAfter($attachTo)
+                                  .appendTo($attachTo)
                                   .hide()
                                   .css('width', $attachTo.innerWidth());
             $this.data('awesomecomplete-list', $list);
@@ -301,7 +301,7 @@
                    '<p class="matchRow"><span class="matchedField">' + topMatch + '</span>: ' +
                         dataItem[topMatch] + '</p>';
     };
-    
+
     var defaultValueFunction = function(dataItem, config)
     {
         return dataItem[config.nameField];

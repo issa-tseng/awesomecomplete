@@ -64,7 +64,7 @@
                 // enter = 13; up = 38; down = 40; esc = 27
                 var $active = $list.children('li.' + config.activeItemClass);
                 if (typeof config.beforeKeyAction === 'function')
-                  config.beforeKeyAction($active.get(), event);
+                    config.beforeKeyAction($active.get(), event);
 
                 switch (event.which)
                 {
@@ -116,7 +116,7 @@
                 }
 
                 if (typeof config.afterKeyAction === 'function')
-                  config.afterKeyAction($active.get(), event);
+                    config.afterKeyAction($active.get(), event);
             });
 
 	    // opera wants keypress rather than keydown to prevent the form submit

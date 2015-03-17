@@ -48,10 +48,10 @@ $(function()
         noResultsMessage: '<p>no results found!</p>',
         staticData: mockData,
         beforeKeyAction: function (activeItem, e) {
-          console.log(activeItem);
+            console.log(activeItem);
         },
         afterKeyAction: function (activeItem, e) {
-          console.log(e.target);
+            console.log(e.target);
         },
         valueFunction: function(dataItem) {
             return dataItem['name'] + ' <' + dataItem['email'] + '>';

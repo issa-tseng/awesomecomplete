@@ -73,7 +73,7 @@
                         {
                             event.preventDefault();
                             $this.val($active.data('awesomecomplete-value'));
-                            config.onComplete($active.data('awesomecomplete-dataItem'));
+                            config.onComplete($active.data('awesomecomplete-dataItem'), $this);
                             $list.hide();
                         }
                         $list.hide();
@@ -286,7 +286,7 @@
                 {
                     var $listItem = $(this);
                     $this.val($listItem.data('awesomecomplete-value'));
-                    config.onComplete($listItem.data('awesomecomplete-dataItem'));
+                    config.onComplete($listItem.data('awesomecomplete-dataItem'), $this);
                 })
                 .mouseover(function()
                 {
@@ -337,7 +337,7 @@
         nameField: 'name',
         noResultsClass: 'noResults',
         noResultsMessage: undefined,
-        onComplete: function(dataItem) {},
+        onComplete: function(dataItem, elem) {},
         sortFunction: defaultSortFunction,
         splitTerm: true,
         staticData: [],

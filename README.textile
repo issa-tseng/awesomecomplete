@@ -35,4 +35,4 @@ There is comprehensive documentation on the configuration options available in t
 
 h2. Browsers
 
-The plugin has been tested on Firefox 3.5+, Safari 4+, Chrome, IE 7 and 8, and the Opera 10 beta.  Let me know if you see something wrong in one of these. It should work as far back as jQuery 1.3.2, and as recent as jQuery 1.6.2.
+The plugin has been tested on Firefox 3.5+, Safari 4+, Chrome, IE 7 and 8, and the Opera 10 beta.  Let me know if you see something wrong in one of these. It should work as far back as jQuery 1.3.2, and as recent as jQuery 3.

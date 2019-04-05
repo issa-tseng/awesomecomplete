@@ -25,7 +25,7 @@ So, it's an autocomplete plugin that works against multiple fields, with a prett
 
 h2. Demo
 
-"Go here":http://dev.dontexplain.com/awesomecomplete/example/example.html for a demo running with some statically preloaded data.  As a bonus to Safari and Firefox users, there are CSS3 rounded corners and drop shadows just for kicks.  The data has names, emails, and phone numbers in it, so feel free to search on any of those.  I should probably have included a mixed number-string field so that you can see that it'll match any field on any item independently, but you'll just have to take my word for it for now.
+"Go here":http://clint-tseng.github.io/awesomecomplete/index.html for a demo running with some statically preloaded data.  As a bonus to Safari and Firefox users, there are CSS3 rounded corners and drop shadows just for kicks.  The data has names, emails, and phone numbers in it, so feel free to search on any of those.  I should probably have included a mixed number-string field so that you can see that it'll match any field on any item independently, but you'll just have to take my word for it for now.
 
 h2. Quick Start
 

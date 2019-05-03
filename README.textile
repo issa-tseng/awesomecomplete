@@ -31,7 +31,7 @@ h2. Quick Start
 
 The provided awesomecomplete.css file is a sample stylesheet for the dropdown list.  It's pretty spartan, so it should be easy to figure out how to get what you want out of it, but you're going to want pretty much all of the classes in there, in more or less that order.  Other than that, take a quick look at the example page and dig right in!
 
-There is comprehensive documentation on the configuration options available in the "wiki":http://wiki.github.com/clint-tseng/Awesomecomplete.
+There is comprehensive documentation on the configuration options available in the "wiki":https://github.com/clint-tseng/awesomecomplete/wiki .
 
 h2. Browsers
 
